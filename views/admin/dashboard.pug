@@ -1,0 +1,66 @@
+extends ../layout_admin
+
+block content
+    .container
+        .col-sm-12
+          #mainContent.jumboton
+            h1
+              span.glyphicon.glyphicon-wrench.icon-lg
+              |  Admin Dashboard
+            |                 
+            br
+            |                 
+            b You&apos;re logged in as #{user.profile.name || user.email || user.id}.
+            |                 
+            p This is the admin control panel. Manage your site here.
+            |  
+            p
+          |             
+          section.page.container
+            .row
+              .col-sm-6
+                .panel.panel-default
+                  .panel-heading
+                    i.icon-bookmark
+                    |                                 
+                    h5 Shortcuts
+                  |                             
+                  .panel-body.centered
+                    .btn-toolbar
+                      .btn-group
+                        button.btn.btn-primary
+                          i.ion-home
+                          br
+                          | Dashboard
+                        |                                     
+                        button.btn.btn-primary(onClick='window.location.href="/users"')
+                          i.ion-person
+                          br
+                          | User List
+                        |                                     
+                        button.btn.btn-primary
+                          i.ion-search
+                          br
+                          | Empty
+                        |                                     
+                        button.btn.btn-primary
+                          i.ion-android-list
+                          br
+                          | Reports
+                        |                                     
+                        button.btn.btn-primary
+                          i.ion-stats-bars
+                          br
+                          | Charts
+                        button.btn.btn-primary(onClick='window.location.href="/admin/settings"')
+                          i.ion-hammer
+                          br
+                          | Settings
+              |                     
+              .col-sm-6
+                .panel.panel-default
+                  .panel-heading
+                    h5 Placeholder
+                  |                             
+                  .panel-body
+                    p Additional Tools will go here

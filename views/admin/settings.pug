@@ -1,0 +1,47 @@
+extends ../layout_admin
+
+block content
+    .container
+        .col-sm-8
+            h1= title
+            form.form-horizontal(method='post',action='/admin/settings/')
+                fieldset
+                    legend Site Information
+                    .form-group
+                      label.control-label(for='siteName') Site Name
+                      .controls
+                        input.form-control(type='text', name='siteName', placeholder='Site Name', value=settings.siteName)
+                    .form-group
+                      label.control-label(for='ownerName') Site Owner Name
+                      .controls
+                        input.form-control(type='text', name='ownerName', placeholder='Owner Name', value=settings.ownerName)
+                    .form-group
+                      label.control-label(for='ownerEmail') Site Owner E-Mail
+                      .controls
+                        input.form-control(type='text', name='ownerEmail', placeholder='Owner Email', value=settings.ownerEmail)
+                    .form-group
+                      label.control-label(for='status') Site Status
+                      .controls
+                        select(name='siteStatus')
+                          option(value='-1', selected=typeof settings.siteStatus === "undefined") Choose Status
+                          option(value='1', selected=settings.siteStatus === 1) Active (online)
+                          option(value='-1', selected=settings.siteStatus === -1) Inactive (offline)
+                    legend Security
+                    .form-group
+                        label(for='allowRegistration')
+                          input#allowRegistration(type='checkbox', name='allowRegistration', value='1', checked=settings.allowRegistration === 1)
+                          |  &nbsp;
+                          span Allow Users to Register on site
+                    .form-group
+                        label(for='userActivation')
+                          input#userActivation(type='checkbox', name='userActivation', value='1', checked=settings.userActivation === 1)
+                          |  &nbsp;
+                          span Signups Require Activation
+                .form-actions
+                    input.btn.btn-primary(type='submit', name='submit', value='Save Settings')
+                    |  &nbsp;
+                    input.btn.btn-default(type='button', name='cancel', value='Cancel' onClick='history.back(-1)')
+                    input(type='hidden', name='_id', value=settings._id)
+                    input(type='hidden', name='_csrf', value=_csrf)
+        .col-sm-4
+            //- placeholder
